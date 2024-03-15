@@ -6,7 +6,7 @@ import requests
 
 class API2D:
     def __init__(self):
-        self.url = "https://openai.api2d.net/v1/chat/completions"
+        self.chat_completions_url = "https://openai.api2d.net/v1/chat/completions"
 
     def chat_completions(self, model='gpt-3.5-turbo', messages=None, safe_mode=False, moderation=False, moderation_stop=False, stream=False, max_tokens=-1):
         if not self.forward_key:
@@ -25,7 +25,7 @@ class API2D:
         if max_tokens > 0:
             data['max_tokens'] = max_tokens
 
-        response = requests.post(self.url, headers=self.headers, json=data)
+        response = requests.post(self.chat_completions_url, headers=self.headers, json=data)
         return response
 
     def init_forward_key(self, forward_key):
